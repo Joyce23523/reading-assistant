@@ -127,3 +127,11 @@ briefings/monthly/2026-05.md
 - 不调用外部 API；
 - 不处理真实隐私数据；
 - 若模板字段发生调整，请同步更新相应脚本。
+
+## Website Preview Plan
+
+This repository is now being prepared for a MkDocs-based knowledge archive website.
+
+- The first version uses MkDocs + Material for Markdown-first browsing.
+- GitHub Pages deployment is **not enabled yet**.
+- The site can be published to GitHub Pages in a future step when ready.

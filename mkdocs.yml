@@ -1,0 +1,24 @@
+site_name: Joyce's Reading & Intelligence Archive
+site_description: Personal knowledge archive for reading, intelligence reviews, and notes.
+site_url: ""
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Briefings:
+      - Overview: briefings/index.md
+      - Weekly Reviews: briefings/weekly.md
+      - Monthly Reviews: briefings/monthly.md
+  - Health Science: health-science/index.md
+  - Reading:
+      - Overview: reading/index.md
+      - Audiobook Notes: reading/audiobook-notes.md
+      - Vocabulary: reading/vocabulary.md
+  - About: about.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
