@@ -135,3 +135,11 @@ This repository is now being prepared for a MkDocs-based knowledge archive websi
 - The first version uses MkDocs + Material for Markdown-first browsing.
 - GitHub Pages deployment is **not enabled yet**.
 - The site can be published to GitHub Pages in a future step when ready.
+
+## Website Deployment
+
+This repository is deployed as a static website using **MkDocs Material + GitHub Pages**.
+
+- Every merge/push to `main` will automatically trigger the GitHub Actions deployment workflow.
+- The workflow builds the site with `mkdocs build` and deploys it through GitHub Pages official actions.
+- In your repository settings, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
