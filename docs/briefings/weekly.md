@@ -1,8 +1,13 @@
 # Weekly Reviews
 
-This page is the entry point for weekly intelligence review notes.
+这里汇总每周情报复盘（weekly review）的归档入口。
 
-Suggested source folder in repository:
+## Archive
+
+- [2026-W19（第一批归档）](../../briefings/weekly/2026-W19.md)
+
+## Source Folder
+
 - `briefings/weekly/`
 
-You can continue adding links or summaries here as weekly notes grow.
+> 后续新增每周复盘时，可继续在此页追加链接。
