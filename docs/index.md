@@ -1,14 +1,45 @@
 # Joyce's Reading & Intelligence Archive
 
-Welcome to this personal knowledge archive.
+This is a personal archive for weekly intelligence reviews, monthly reflections, health-science notes, audiobook notes, and vocabulary.
 
-This site is designed to preserve and organize:
-- weekly intelligence reviews,
-- monthly intelligence reviews,
-- health-science notes,
-- audiobook reading notes,
-- and vocabulary accumulation.
+> 中文说明：这是你的 personal knowledge dashboard（个人知识仪表盘），用于持续整理与追踪学习和思考。
 
-It is a lightweight and maintainable first version based on MkDocs Material.
+## Dashboard Entry Cards
 
-> 中文说明：这是一个用于长期积累阅读与认知笔记的静态知识库入口。
+### 1) Weekly Intelligence Reviews
+Short-cycle tracking for weekly signals, ideas, and adjustments.
+
+➡️ Go to: [Weekly Intelligence Reviews](./briefings/weekly.md)
+
+### 2) Monthly Intelligence Reviews
+Longer-cycle reflection for trend synthesis and strategic thinking.
+
+➡️ Go to: [Monthly Intelligence Reviews](./briefings/monthly.md)
+
+### 3) Health & Neuroscience
+Dedicated notes for health science, neuroscience, and evidence-based wellbeing.
+
+➡️ Go to: [Health & Neuroscience](./health-science/index.md)
+
+### 4) Audiobook Notes
+Reading and listening notes focused on language growth and knowledge retention.
+
+➡️ Go to: [Audiobook Notes](./reading/audiobook-notes.md)
+
+## Recent Updates
+
+Current archived entries (weekly/monthly):
+
+- **Weekly**: [2026-W19](./briefings/weekly/2026-W19.md)
+- **Monthly**: [2026-05](./briefings/monthly/2026-05.md)
+
+> 中文提示：这里会持续追加最新的 weekly / monthly 条目。
+
+## How to Use This Archive
+
+- **Weekly reviews** are for short-term tracking.
+- **Monthly reviews** are for long-term trend reflection.
+- **Health-science notes** are kept separate from technology/geopolitics, so domain thinking stays clear.
+- **Audiobook notes** are for language and reading development.
+
+You can use this homepage as your central navigation hub, then drill down by cadence (weekly/monthly) or domain (health, reading, intelligence).
