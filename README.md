@@ -1,79 +1,129 @@
-# Personal Reading Assistant
+# Personal Knowledge Archive
 
-一个为**英文有声书学习者**设计的最小可运行项目结构，帮助你把每日听书记录整理为中英双语复盘。
+这是一个本地优先（local-first）的个人知识归档仓库，包含两大模块：
+
+1. **英文阅读助手（English Audiobook Reading Assistant）**
+2. **周/月晨报归档系统（Weekly/Monthly Briefing Archive）**
+
+全流程使用本地 Markdown/CSV 文件，不调用外部 API。
 
 ## 项目目标
 
-- 记录每日英文有声书输入（章节、时长、难点、感想）；
-- 结构化提取关键内容，输出可复习的双语 review；
-- 积累生词并整理为 CSV 词汇表；
-- 全流程只使用本地文件，不调用外部 API。
+- 记录并复盘英文有声书输入（章节、时长、难点、感想）；
+- 累积可复用词汇，维护个人词汇表；
+- 将晨报信息按**周**与**月**沉淀为结构化知识资产；
+- 不保存每日原始晨报，仅保留周/月归档结果。
 
 ## 目录结构
 
 ```text
-personal-reading-assistant/
+reading-assistant/
 ├── README.md
 ├── notes/
 │   ├── daily_log_template.md
 │   └── chapter_review_template.md
+├── vocabulary/
+│   ├── raw_words.txt
+│   └── vocab_sheet_template.csv
 ├── scripts/
-│   └── build_daily_review.py
-└── vocabulary/
-    ├── raw_words.txt
-    └── vocab_sheet_template.csv
+│   ├── build_daily_review.py
+│   └── create_digest_file.py
+├── briefings/
+│   ├── weekly/
+│   └── monthly/
+├── health-science/
+│   ├── weekly-digest/
+│   └── monthly-review/
+└── templates/
+    ├── weekly_digest_template.md
+    └── monthly_digest_template.md
 ```
 
-## 使用方式（最小流程）
+## 模块 A：英文阅读助手
 
-### 1) 新建当天听书笔记
+### 最小流程
 
-复制模板：
+1) 新建当天听书笔记
 
 ```bash
 cp notes/daily_log_template.md notes/2026-05-08-log.md
 ```
 
-然后填写：书名、章节、摘要、生词、反思等内容。
-
-### 2) 生成结构化复盘文件
-
-运行脚本：
+2) 生成结构化复盘
 
 ```bash
 python3 scripts/build_daily_review.py notes/2026-05-08-log.md
 ```
 
-脚本会在同目录生成：
+输出示例：
 
 ```text
 notes/2026-05-08-log.review.md
 ```
 
-### 3) 维护词汇表
+3) 维护词汇表
 
-- 临时生词先记到 `vocabulary/raw_words.txt`；
-- 每周手动整理到 `vocabulary/vocab_sheet_template.csv`；
-- 可按 `word / meaning_zh / example_en / example_zh / source` 维护。
+- 临时生词先记录到 `vocabulary/raw_words.txt`；
+- 每周手动整理到 `vocabulary/vocab_sheet_template.csv`。
 
-## 面向英语学习者的建议
+## 模块 B：周/月晨报归档系统
 
-- **每天 15~30 分钟**固定输入，优先稳定节奏；
-- 每次听书后写 3~5 句英文 summary，再补中文理解；
-- 生词只挑“高频且可复用”的，避免一次性背太多；
-- 章节复盘时关注：人物关系、核心冲突、表达方式。
+> 本仓库不保存每日原始晨报（即不提供 `briefings/daily/`）。
 
-## 脚本说明
+### 创建周报归档文件
 
-`scripts/build_daily_review.py` 当前是最小可运行版本：
+```bash
+python scripts/create_digest_file.py weekly 2026-W19
+```
 
-- 输入：一个 Markdown 日志文件；
-- 解析：按标题抓取关键板块（如 Summary EN/ZH、Vocabulary 等）；
-- 输出：一个新的 Markdown 复盘文件，包含原始内容和结构化块；
-- 不读取或写入任何个人敏感信息字段。
+会创建：
 
-## 注意
+```text
+briefings/weekly/2026-W19.md
+```
 
-- 本项目不处理真实个人隐私数据；
-- 所有内容均保存在本地 Markdown/CSV 文件中；
-- 若模板字段名称修改，请同步更新脚本中的标题映射。
+内容来源：`templates/weekly_digest_template.md`。
+
+### 创建月报归档文件
+
+```bash
+python scripts/create_digest_file.py monthly 2026-05
+```
+
+会创建：
+
+```text
+briefings/monthly/2026-05.md
+```
+
+内容来源：`templates/monthly_digest_template.md`。
+
+## 模板字段说明
+
+### Weekly 模板
+
+- Week
+- 高频主题
+- 重要事件时间线
+- 趋势判断
+- 值得继续跟踪的问题
+- 个人知识卡片
+- 下周观察重点
+
+### Monthly 模板
+
+- Month
+- 本月核心趋势
+- AI & Technology
+- Geopolitics
+- Economy
+- Education & Work Relevance
+- Health / Neuroscience Notes
+- Things I Changed My Mind About
+- Questions for Next Month
+
+## 注意事项
+
+- 不调用外部 API；
+- 不处理真实隐私数据；
+- 若模板字段发生调整，请同步更新相应脚本。
