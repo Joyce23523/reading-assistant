@@ -1,0 +1,135 @@
+:root {
+  --archive-surface: #f7f8fc;
+  --archive-surface-2: #eef0f7;
+  --archive-border: #d8deea;
+  --archive-text-soft: #4c5270;
+  --archive-title: #1d2242;
+  --archive-tag-bg: #e5e8f6;
+}
+
+.md-main__inner {
+  margin-top: 1.2rem;
+}
+
+.md-content__inner {
+  padding-bottom: 3rem;
+}
+
+/* Homepage hero */
+.archive-hero {
+  background: linear-gradient(145deg, var(--archive-surface), #ffffff 60%, var(--archive-surface-2));
+  border: 1px solid var(--archive-border);
+  border-radius: 18px;
+  padding: 1.6rem 1.4rem;
+  margin: 0.4rem 0 1.8rem;
+}
+
+.archive-hero h1 {
+  margin: 0 0 0.7rem;
+  line-height: 1.25;
+}
+
+.archive-subtitle {
+  margin: 0;
+  color: var(--archive-text-soft);
+  font-size: 1.02rem;
+}
+
+/* Section hierarchy + spacing */
+.md-typeset h2 {
+  margin-top: 2.1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--archive-border);
+}
+
+.md-typeset h3 {
+  margin-top: 1.35rem;
+  color: var(--archive-title);
+}
+
+/* Dashboard card grid */
+.archive-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 0.9rem;
+}
+
+.archive-card {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--archive-border);
+  border-radius: 14px;
+  padding: 1rem 1rem 0.95rem;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.archive-card:hover {
+  transform: translateY(-2px);
+  border-color: #aeb7db;
+  box-shadow: 0 10px 20px rgba(45, 58, 105, 0.08);
+}
+
+.archive-card-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.archive-card-desc {
+  margin: 0.45rem 0 0;
+  color: var(--archive-text-soft);
+  font-size: 0.92rem;
+}
+
+/* Briefing tags */
+.archive-tags {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.archive-tag {
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #d3d8ea;
+  background: var(--archive-tag-bg);
+  color: #3a4062;
+}
+
+/* Reading cards / utility panels */
+.archive-panel {
+  border: 1px solid var(--archive-border);
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
+  margin-top: 0.9rem;
+}
+
+/* Link hover refinement */
+.md-typeset a {
+  text-underline-offset: 0.13em;
+  text-decoration-thickness: 0.09em;
+}
+
+.md-typeset a:hover {
+  color: #303f9f;
+  text-decoration-style: wavy;
+}
+
+/* Footer spacing */
+.md-footer-meta__inner,
+.md-footer__inner {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 700px) {
+  .archive-hero {
+    padding: 1.2rem 1rem;
+  }
+}

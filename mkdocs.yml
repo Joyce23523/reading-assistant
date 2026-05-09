@@ -4,6 +4,19 @@ site_url: ""
 
 theme:
   name: material
+  palette:
+    primary: indigo
+    accent: deep purple
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
   - Home: index.md
