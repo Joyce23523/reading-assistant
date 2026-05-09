@@ -13,7 +13,7 @@ from dateutil import parser as date_parser
 from openai import OpenAI
 
 SHANGHAI_TZ = ZoneInfo("Asia/Shanghai")
-MODEL_NAME = "openrouter/free"
+MODEL_NAME = os.getenv("OPENROUTER_MODEL", "openrouter/free")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 HTTP_REFERER = "https://joyce23523.github.io/reading-assistant/"
 X_OPENROUTER_TITLE = "Joyce Reading Assistant"

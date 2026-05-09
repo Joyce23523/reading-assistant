@@ -149,8 +149,9 @@ This repository is deployed as a static website using **MkDocs Material + GitHub
 This workflow uses GitHub Actions + OpenRouter API to generate a daily Morning Intelligence Briefing.
 
 - It requires repository secret: `OPENROUTER_API_KEY`.
-- It currently uses a free model for pipeline testing.
-- Quality may be lower than paid models.
-- After testing, `MODEL_NAME` can be changed to `openai/gpt-4.1-mini` or another paid model.
+- Default scheduled/automatic runs still use `openrouter/free` to avoid unexpected paid usage.
+- For manual testing (`workflow_dispatch`), you can set `model` to `openai/gpt-4.1-mini` (or another OpenRouter model id).
+- Before using paid models, confirm your OpenRouter credits and key spending limit.
+- Model ids should always follow the official OpenRouter models page.
 - Public repo must never contain API keys.
 The OpenRouter daily briefing workflow now builds and deploys the MkDocs site directly after generating or updating the daily briefing, because commits made with GITHUB_TOKEN do not trigger the separate deploy workflow automatically.
