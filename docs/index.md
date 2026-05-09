@@ -13,27 +13,27 @@
 ## Dashboard Entry
 
 <div class="archive-grid">
-  <a class="archive-card" href="./briefings/daily.md">
+  <a class="archive-card" href="briefings/daily/">
     <p class="archive-card-title">Daily Briefings</p>
     <p class="archive-card-desc">Fast daily scan for key updates, weak signals, and action context.</p>
   </a>
-  <a class="archive-card" href="./briefings/weekly.md">
+  <a class="archive-card" href="briefings/weekly/">
     <p class="archive-card-title">Weekly Reviews</p>
     <p class="archive-card-desc">Consolidate the week: what mattered, what shifted, and what to track.</p>
   </a>
-  <a class="archive-card" href="./briefings/monthly.md">
+  <a class="archive-card" href="briefings/monthly/">
     <p class="archive-card-title">Monthly Reviews</p>
     <p class="archive-card-desc">Step back for trend mapping, pattern recognition, and strategic sense-making.</p>
   </a>
-  <a class="archive-card" href="./reading/index.md">
+  <a class="archive-card" href="reading/">
     <p class="archive-card-title">Reading &amp; Audiobooks</p>
     <p class="archive-card-desc">Reading pipeline, audiobook notes, and language-forward knowledge capture.</p>
   </a>
-  <a class="archive-card" href="./health-science/index.md">
+  <a class="archive-card" href="health-science/">
     <p class="archive-card-title">Mind &amp; Body</p>
     <p class="archive-card-desc">Health science and wellbeing evidence, kept clear and practical.</p>
   </a>
-  <a class="archive-card" href="./about.md">
+  <a class="archive-card" href="about/">
     <p class="archive-card-title">Music Journal</p>
     <p class="archive-card-desc">A reflective corner for listening notes, mood archives, and memory through sound.</p>
   </a>
