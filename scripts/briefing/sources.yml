@@ -1,0 +1,25 @@
+sources:
+  - name: OpenAI Blog
+    rss: https://openai.com/news/rss.xml
+  - name: Google AI Blog
+    rss: https://blog.google/technology/ai/rss/
+  - name: Microsoft Blog
+    rss: https://blogs.microsoft.com/feed/
+  - name: Anthropic News
+    rss: https://www.anthropic.com/news/rss.xml
+  - name: MIT Technology Review
+    rss: https://www.technologyreview.com/feed/
+  - name: Reuters Technology
+    rss: https://www.reutersagency.com/feed/?best-topics=technology
+  - name: BBC World
+    rss: http://feeds.bbci.co.uk/news/world/rss.xml
+  - name: The Guardian World
+    rss: https://www.theguardian.com/world/rss
+  - name: Brookings
+    rss: https://www.brookings.edu/feed/
+  - name: CSIS
+    rss: https://www.csis.org/rss.xml
+  - name: OECD Education
+    rss: https://www.oecd.org/education/rss.xml
+  - name: Times Higher Education
+    rss: https://www.timeshighereducation.com/rss.xml

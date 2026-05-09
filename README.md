@@ -143,3 +143,13 @@ This repository is deployed as a static website using **MkDocs Material + GitHub
 - Every merge/push to `main` will automatically trigger the GitHub Actions deployment workflow.
 - The workflow builds the site with `mkdocs build` and deploys it through GitHub Pages official actions.
 - In your repository settings, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+
+## OpenRouter Free Daily Briefing Test
+
+This workflow uses GitHub Actions + OpenRouter API to generate a daily Morning Intelligence Briefing.
+
+- It requires repository secret: `OPENROUTER_API_KEY`.
+- It currently uses a free model for pipeline testing.
+- Quality may be lower than paid models.
+- After testing, `MODEL_NAME` can be changed to `openai/gpt-4.1-mini` or another paid model.
+- Public repo must never contain API keys.
