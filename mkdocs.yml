@@ -14,6 +14,9 @@ nav:
   - Health Science: health-science/index.md
   - Reading:
       - Overview: reading/index.md
+      - Current Audiobooks: reading/current-audiobooks.md
+      - Yesteryear: reading/yesteryear.md
+      - The Correspondent: reading/the-correspondent.md
       - Audiobook Notes: reading/audiobook-notes.md
       - Vocabulary: reading/vocabulary.md
   - About: about.md
