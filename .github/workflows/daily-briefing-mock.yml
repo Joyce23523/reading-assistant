@@ -1,0 +1,40 @@
+name: Daily Briefing Mock
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 23 * * *"
+
+jobs:
+  generate-daily-mock:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate daily mock briefing
+        run: python scripts/briefing/generate_daily_mock.py
+
+      - name: Update daily index
+        run: python scripts/briefing/update_daily_index.py
+
+      - name: Commit and push if changed
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            DATE=$(TZ=Asia/Shanghai date +%F)
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/briefings/daily.md docs/briefings/daily/
+            git commit -m "Add daily mock briefing for ${DATE}"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi

@@ -11,6 +11,7 @@ nav:
       - Overview: briefings/index.md
       - Weekly Reviews: briefings/weekly.md
       - Monthly Reviews: briefings/monthly.md
+      - Daily Briefings: briefings/daily.md
   - Health Science: health-science/index.md
   - Reading:
       - Overview: reading/index.md
