@@ -7,6 +7,10 @@ on:
         description: "Force overwrite today's daily briefing"
         required: false
         default: "false"
+      model:
+        description: "OpenRouter model id, e.g. openrouter/free or openai/gpt-4.1-mini"
+        required: false
+        default: "openrouter/free"
   schedule:
     # Beijing 07:30 = UTC 23:30 (previous day)
     - cron: "30 23 * * *"
@@ -45,6 +49,7 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           FORCE: ${{ github.event.inputs.force }}
+          OPENROUTER_MODEL: ${{ github.event.inputs.model || 'openrouter/free' }}
         run: python scripts/briefing/generate_daily_openrouter_free.py
 
       - name: Update daily index
