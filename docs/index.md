@@ -1,45 +1,58 @@
-# Joyce's Reading & Intelligence Archive
+<div class="archive-hero">
+  <h1>Joyce's Reading &amp; Intelligence Archive</h1>
+  <p class="archive-subtitle">A personal knowledge system for intelligence briefings, reading, audiobooks, health science, music, and long-form reflection.</p>
+  <div class="archive-tags">
+    <span class="archive-tag">Daily Signal</span>
+    <span class="archive-tag">Weekly Synthesis</span>
+    <span class="archive-tag">Long-term Reflection</span>
+  </div>
+</div>
 
-This is a personal archive for weekly intelligence reviews, monthly reflections, health-science notes, audiobook notes, and vocabulary.
+> 中文提示：这是一个偏安静、长期主义的知识档案首页，帮助你按节奏阅读、复盘与沉淀。
 
-> 中文说明：这是你的 personal knowledge dashboard（个人知识仪表盘），用于持续整理与追踪学习和思考。
+## Dashboard Entry
 
-## Dashboard Entry Cards
+<div class="archive-grid">
+  <a class="archive-card" href="./briefings/daily.md">
+    <p class="archive-card-title">Daily Briefings</p>
+    <p class="archive-card-desc">Fast daily scan for key updates, weak signals, and action context.</p>
+  </a>
+  <a class="archive-card" href="./briefings/weekly.md">
+    <p class="archive-card-title">Weekly Reviews</p>
+    <p class="archive-card-desc">Consolidate the week: what mattered, what shifted, and what to track.</p>
+  </a>
+  <a class="archive-card" href="./briefings/monthly.md">
+    <p class="archive-card-title">Monthly Reviews</p>
+    <p class="archive-card-desc">Step back for trend mapping, pattern recognition, and strategic sense-making.</p>
+  </a>
+  <a class="archive-card" href="./reading/index.md">
+    <p class="archive-card-title">Reading &amp; Audiobooks</p>
+    <p class="archive-card-desc">Reading pipeline, audiobook notes, and language-forward knowledge capture.</p>
+  </a>
+  <a class="archive-card" href="./health-science/index.md">
+    <p class="archive-card-title">Mind &amp; Body</p>
+    <p class="archive-card-desc">Health science and wellbeing evidence, kept clear and practical.</p>
+  </a>
+  <a class="archive-card" href="./about.md">
+    <p class="archive-card-title">Music Journal</p>
+    <p class="archive-card-desc">A reflective corner for listening notes, mood archives, and memory through sound.</p>
+  </a>
+</div>
 
-### 1) Weekly Intelligence Reviews
-Short-cycle tracking for weekly signals, ideas, and adjustments.
+## Recent Use
 
-➡️ Go to: [Weekly Intelligence Reviews](./briefings/weekly.md)
+<div class="archive-panel">
 
-### 2) Monthly Intelligence Reviews
-Longer-cycle reflection for trend synthesis and strategic thinking.
+- **Morning**: read daily briefing.
+- **Sunday**: consolidate weekly review.
+- **Monthly**: review long-term trends.
 
-➡️ Go to: [Monthly Intelligence Reviews](./briefings/monthly.md)
+</div>
 
-### 3) Health & Neuroscience
-Dedicated notes for health science, neuroscience, and evidence-based wellbeing.
+## Archive Rhythm
 
-➡️ Go to: [Health & Neuroscience](./health-science/index.md)
+- Start with **Daily Briefings** for rapid orientation.
+- Use **Weekly Reviews** to connect short-cycle insights.
+- Reserve **Monthly Reviews** for deeper, long-horizon judgment.
+- Balance cognition with **Mind & Body** and **Reading & Audiobooks** notes.
 
-### 4) Audiobook Notes
-Reading and listening notes focused on language growth and knowledge retention.
-
-➡️ Go to: [Audiobook Notes](./reading/audiobook-notes.md)
-
-## Recent Updates
-
-Current archived entries (weekly/monthly):
-
-- **Weekly**: [2026-W19](./briefings/weekly/2026-W19.md)
-- **Monthly**: [2026-05](./briefings/monthly/2026-05.md)
-
-> 中文提示：这里会持续追加最新的 weekly / monthly 条目。
-
-## How to Use This Archive
-
-- **Weekly reviews** are for short-term tracking.
-- **Monthly reviews** are for long-term trend reflection.
-- **Health-science notes** are kept separate from technology/geopolitics, so domain thinking stays clear.
-- **Audiobook notes** are for language and reading development.
-
-You can use this homepage as your central navigation hub, then drill down by cadence (weekly/monthly) or domain (health, reading, intelligence).
