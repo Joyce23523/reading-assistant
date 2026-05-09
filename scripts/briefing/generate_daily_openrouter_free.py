@@ -134,6 +134,7 @@ Core writing requirements:
 3) Do not mechanically translate proper nouns.
 4) Tone: analytical, calm, concise, mobile-readable; not bureaucratic, not report-like, not clickbait.
 5) Use short bullets. Avoid long paragraphs and empty phrases.
+6) Remove templated phrasing. Write like a natural intelligence briefing note, not a classroom worksheet.
 
 Grounding rules (strict):
 1) Use ONLY facts from the provided source digest.
@@ -167,12 +168,18 @@ Output must be Markdown and must include EXACTLY these sections and headings:
 Section instructions (follow exactly):
 1) ## Top 3 Tech & AI Stories
    - Use STRICT format below. No extra numbering layers. No 4th item.
+   - Each story must contain ONLY 4 bullets total: 发生了什么 / 为什么重要 / 对我有什么意义 / Source.
    - Do NOT create sub-numbering for 发生了什么 / 为什么重要 / 对我有什么意义.
    - Format:
      ### 1. English or bilingual headline
      - **发生了什么**：中文解释，保留必要英文术语。
-     - **为什么重要**：说明结构性意义，不要泛泛而谈。
-     - **对我有什么意义**：联系 Joyce 的知识系统、国际教育、A-Level 教学管理、AI 工具使用或长期观察主题。
+     - **为什么重要**：强调结构性判断（制度、激励、基础设施、治理、地缘格局、产业链），不要复述新闻。
+     - **对我有什么意义**：写成 Joyce 的 personal knowledge system memo，不写泛泛“教学应用”。必须尽量具体到以下一个或多个维度：
+       - 国际学校管理层可观察的组织信号；
+       - AI 工具使用与 automation workflow 的可迁移做法；
+       - A-Level / 国际课程学生未来能力画像（如 verification, prompt literacy, cybersecurity awareness）；
+       - 长期追踪 AI governance / education mobility / geopolitics 的观察点。
+       若证据不足，写明 "Source limitations"。
      - **Source**：来源名 + 日期；如有链接则保留链接。
      ### 2. English or bilingual headline
      - **发生了什么**：
@@ -194,6 +201,7 @@ Section instructions (follow exactly):
 
 3) ## Education / International Mobility Angle
    - Connect to international schools, A-Level/international curriculum, higher education, visas, admissions, or student mobility only when supported by sources.
+   - If no real education / mobility source support exists, do NOT force education linkage; explicitly state source limitation.
    - If source digest has insufficient evidence, write exactly:
      “今日来源中没有足够强的 education / mobility signal。可继续观察签证、高等教育政策、国际学生流动和中美教育相关政策。”
 
@@ -232,6 +240,13 @@ Hard format prohibitions:
 - Do not write continuous 1,2,3,4,5,6,7 report-style numbering across sections.
 - Do not turn "发生了什么 / 为什么重要 / 对我有什么意义" into numbered subitems.
 - Do not write as a Chinese official report, news roundup, or long-form memo.
+- Avoid empty phrases, including:
+  - “为教育机构提供参考”
+  - “具有重要意义”
+  - “在当今社会中很重要”
+  - “可用于教学案例设计”
+- Keep and naturally embed key English terms when relevant (e.g., Codex, sandboxing, Trusted Access, cybersecurity, AI agents, sovereign cloud, education mobility).
+- For headlines, prefer original English title or concise bilingual title; avoid awkward machine-generated English.
 
 Here is the source digest:
 {source_digest}
