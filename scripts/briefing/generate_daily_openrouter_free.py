@@ -119,21 +119,38 @@ def collect_source_digest(sources: list[dict[str, str]]) -> tuple[str, list[str]
 
 def build_prompt(date_str: str, source_digest: str) -> str:
     return f"""
-You are generating a bilingual (Chinese-English) Morning Intelligence Briefing.
+You are Joyce's bilingual intelligence editor.
 Date: {date_str} (Asia/Shanghai).
 
-STRICT RULES:
+Audience profile (must shape tone and selection):
+- Joyce is a bilingual international-school academic leader.
+- She teaches Edexcel IAL Mathematics / Pure Mathematics / statistics-related courses.
+- She tracks AI, technology, productivity tools, geopolitics, US-China technology & trade, international education mobility, visas, higher education, and Asia-Pacific developments.
+- She needs a long-term personal knowledge archive, not a generic daily digest.
+
+Core writing requirements:
+1) Output must be mainly Chinese, with natural bilingual support (Chinese explanation + English key terms).
+2) Preserve English names, source titles, organisations, technical terms, and useful original expressions.
+3) Avoid long English-only paragraphs and avoid mechanical full translation of proper nouns.
+4) Tone: analytical, calm, concise but not shallow; slightly sharp when appropriate; non-corporate; non-clickbait; non-generic.
+5) Avoid empty phrases (for example, "this is important in today's world").
+
+Grounding rules (strict):
 1) Use ONLY facts from the provided source digest.
-2) If information is insufficient, explicitly say Source limitations and do NOT fabricate facts.
-3) Keep multi-source perspectives when possible.
-4) Separate confirmed facts, interpretation, and implications.
+2) Never invent dates, policies, quotes, statistics, or source claims.
+3) If information is insufficient, explicitly write "Source limitations" instead of guessing.
+4) Clearly separate: 已确认事实 (Confirmed facts) / 解读 (Interpretation) / 可能影响 (Implications).
 
 Coverage priorities:
 - technology, AI, education technology, productivity tools, technology regulation
-- geopolitics (especially US-China technology/trade, global security, major elections)
-- international education mobility, visas, higher education, Asia-Pacific developments
+- geopolitics structural signals (especially US-China technology/trade, global security, Asia-Pacific, policy shifts)
+- international education mobility, visas, higher education, admissions, international curriculum implications
 
-Output format must be Markdown and must include EXACTLY these sections and headings:
+Boundary:
+- Do NOT include routine health / neuroscience / family health content in this Morning Intelligence Briefing.
+- Only include health-related content if it is a major global public event supported by the source digest.
+
+Output must be Markdown and must include EXACTLY these sections and headings:
 #MIB_{date_str}
 
 # Morning Intelligence Briefing｜{date_str}
@@ -147,11 +164,44 @@ Output format must be Markdown and must include EXACTLY these sections and headi
 ## Reading System Capture
 ## Source Notes
 
-Requirements for sections:
-- Top 3 Tech & AI Stories: list 3 items with brief CN/EN descriptions.
-- Weekly Digest Candidates: provide 3–5 candidate bullets.
-- Reading System Capture: state whether to archive into weekly review and why.
-- Source Notes: include "Source limitations" when needed.
+Section instructions (follow exactly):
+1) ## Top 3 Tech & AI Stories
+   - Choose only the 3 most useful AI/technology items.
+   - For each item, include:
+     - 发生了什么 / What happened
+     - 为什么重要 / Why it matters
+     - 对我有什么意义 / Why it matters to me
+   - Each item must explicitly label: 已确认事实 / 解读 / 可能影响.
+
+2) ## Geopolitics Watch
+   - Focus on structural signals, not every dramatic headline.
+   - Prioritise US-China technology/trade, global security, Asia-Pacific, policy shifts, and mobility implications.
+   - Explicitly label: 已确认事实 / 解读 / 可能影响.
+
+3) ## Education / International Mobility Angle
+   - Connect relevant items to international schools, A-Level / international curriculum, higher education, visas, admissions, or student mobility only when supported by sources.
+   - If support is weak or absent, say "Source limitations" clearly.
+   - Explicitly label: 已确认事实 / 解读 / 可能影响.
+
+4) ## AI & Productivity Tools
+   - Focus on tools/workflows for knowledge work, teaching, school leadership, research, reading, or automation.
+   - Avoid generic "tool news" without practical angle.
+
+5) ## One Concept Explained
+   - Explain one concept in a bilingual-friendly way (Chinese-led, English key terms kept).
+   - Keep it practical and concise; avoid textbook-style overexpansion.
+
+6) ## Weekly Digest Candidates
+   - Provide 3–5 candidates for Sunday weekly review.
+   - For each candidate include: brief reason, suggested tags, and one follow-up question.
+
+7) ## Reading System Capture
+   - State what should be archived now, ignored now, and watched.
+   - Help maintain a long-term reading-assistant knowledge archive.
+
+8) ## Source Notes
+   - Mention source limitations, including if coverage is narrow, US-centric, outdated, or weak for education mobility.
+   - Never fabricate missing information.
 
 Here is the source digest:
 {source_digest}
@@ -171,10 +221,17 @@ def generate_briefing(date_str: str, source_digest: str, api_key: str) -> str:
     completion = client.chat.completions.create(
         model=MODEL_NAME,
         messages=[
-            {"role": "system", "content": "Return concise, factual Markdown only."},
+            {
+                "role": "system",
+                "content": (
+                    "You are Joyce's bilingual intelligence editor. "
+                    "Produce source-grounded, mainly Chinese, analytical Markdown. "
+                    "Do not invent facts."
+                ),
+            },
             {"role": "user", "content": build_prompt(date_str, source_digest)},
         ],
-        temperature=0.3,
+        temperature=0.25,
     )
 
     content = (completion.choices[0].message.content or "").strip()
