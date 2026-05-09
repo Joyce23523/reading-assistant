@@ -11,11 +11,21 @@ on:
     # Beijing 07:30 = UTC 23:30 (previous day)
     - cron: "30 23 * * *"
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
-  generate-daily-openrouter-free:
+  generate-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -27,7 +37,9 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Generate daily OpenRouter free briefing
         env:
@@ -41,12 +53,26 @@ jobs:
       - name: Commit and push if changed
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
-            DATE=$(TZ=Asia/Shanghai date +%F)
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add docs/briefings/daily.md docs/briefings/daily/
-            git commit -m "Add daily OpenRouter free briefing for ${DATE}"
+            git commit -m "Add daily OpenRouter free briefing"
             git push origin main
           else
             echo "No changes to commit."
           fi
+
+      - name: Build MkDocs site
+        run: mkdocs build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
