@@ -1,2 +1,6 @@
 mkdocs
 mkdocs-material
+openai
+feedparser
+pyyaml
+python-dateutil

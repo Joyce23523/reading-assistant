@@ -1,0 +1,52 @@
+name: Daily Briefing OpenRouter Free
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force overwrite today's daily briefing"
+        required: false
+        default: "false"
+  schedule:
+    # Beijing 07:30 = UTC 23:30 (previous day)
+    - cron: "30 23 * * *"
+
+jobs:
+  generate-daily-openrouter-free:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate daily OpenRouter free briefing
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          FORCE: ${{ github.event.inputs.force }}
+        run: python scripts/briefing/generate_daily_openrouter_free.py
+
+      - name: Update daily index
+        run: python scripts/briefing/update_daily_index.py
+
+      - name: Commit and push if changed
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            DATE=$(TZ=Asia/Shanghai date +%F)
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/briefings/daily.md docs/briefings/daily/
+            git commit -m "Add daily OpenRouter free briefing for ${DATE}"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
