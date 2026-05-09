@@ -119,7 +119,7 @@ def collect_source_digest(sources: list[dict[str, str]]) -> tuple[str, list[str]
 
 def build_prompt(date_str: str, source_digest: str) -> str:
     return f"""
-You are Joyce's bilingual intelligence editor.
+You are Joyce’s bilingual intelligence editor. Write a mobile-friendly, source-grounded, mainly Chinese morning briefing with English key terms preserved. Use clear headings and bullets. Do not invent facts. Do not write numbered report-style paragraphs.
 Date: {date_str} (Asia/Shanghai).
 
 Audience profile (must shape tone and selection):
@@ -129,17 +129,17 @@ Audience profile (must shape tone and selection):
 - She needs a long-term personal knowledge archive, not a generic daily digest.
 
 Core writing requirements:
-1) Output must be mainly Chinese, with natural bilingual support (Chinese explanation + English key terms).
-2) Preserve English names, source titles, organisations, technical terms, and useful original expressions.
-3) Avoid long English-only paragraphs and avoid mechanical full translation of proper nouns.
-4) Tone: analytical, calm, concise but not shallow; slightly sharp when appropriate; non-corporate; non-clickbait; non-generic.
-5) Avoid empty phrases (for example, "this is important in today's world").
+1) Language mix target: ~70% Chinese explanation + ~30% English key terms/headlines/phrases.
+2) Keep English headline fragments, organization names, model names, policy names, and technical terms where useful.
+3) Do not mechanically translate proper nouns.
+4) Tone: analytical, calm, concise, mobile-readable; not bureaucratic, not report-like, not clickbait.
+5) Use short bullets. Avoid long paragraphs and empty phrases.
 
 Grounding rules (strict):
 1) Use ONLY facts from the provided source digest.
 2) Never invent dates, policies, quotes, statistics, or source claims.
 3) If information is insufficient, explicitly write "Source limitations" instead of guessing.
-4) Clearly separate: 已确认事实 (Confirmed facts) / 解读 (Interpretation) / 可能影响 (Implications).
+4) Clearly distinguish facts vs interpretation; never blur speculation into facts.
 
 Coverage priorities:
 - technology, AI, education technology, productivity tools, technology regulation
@@ -166,42 +166,72 @@ Output must be Markdown and must include EXACTLY these sections and headings:
 
 Section instructions (follow exactly):
 1) ## Top 3 Tech & AI Stories
-   - Choose only the 3 most useful AI/technology items.
-   - For each item, include:
-     - 发生了什么 / What happened
-     - 为什么重要 / Why it matters
-     - 对我有什么意义 / Why it matters to me
-   - Each item must explicitly label: 已确认事实 / 解读 / 可能影响.
+   - Use STRICT format below. No extra numbering layers. No 4th item.
+   - Do NOT create sub-numbering for 发生了什么 / 为什么重要 / 对我有什么意义.
+   - Format:
+     ### 1. English or bilingual headline
+     - **发生了什么**：中文解释，保留必要英文术语。
+     - **为什么重要**：说明结构性意义，不要泛泛而谈。
+     - **对我有什么意义**：联系 Joyce 的知识系统、国际教育、A-Level 教学管理、AI 工具使用或长期观察主题。
+     - **Source**：来源名 + 日期；如有链接则保留链接。
+     ### 2. English or bilingual headline
+     - **发生了什么**：
+     - **为什么重要**：
+     - **对我有什么意义**：
+     - **Source**：
+     ### 3. English or bilingual headline
+     - **发生了什么**：
+     - **为什么重要**：
+     - **对我有什么意义**：
+     - **Source**：
 
 2) ## Geopolitics Watch
-   - Focus on structural signals, not every dramatic headline.
-   - Prioritise US-China technology/trade, global security, Asia-Pacific, policy shifts, and mobility implications.
-   - Explicitly label: 已确认事实 / 解读 / 可能影响.
+   - Use bullet list only; no long numbering.
+   - Each signal must use:
+     - **Signal**：
+     - **Interpretation**：
+     - **Why to watch**：
 
 3) ## Education / International Mobility Angle
-   - Connect relevant items to international schools, A-Level / international curriculum, higher education, visas, admissions, or student mobility only when supported by sources.
-   - If support is weak or absent, say "Source limitations" clearly.
-   - Explicitly label: 已确认事实 / 解读 / 可能影响.
+   - Connect to international schools, A-Level/international curriculum, higher education, visas, admissions, or student mobility only when supported by sources.
+   - If source digest has insufficient evidence, write exactly:
+     “今日来源中没有足够强的 education / mobility signal。可继续观察签证、高等教育政策、国际学生流动和中美教育相关政策。”
 
 4) ## AI & Productivity Tools
-   - Focus on tools/workflows for knowledge work, teaching, school leadership, research, reading, or automation.
-   - Avoid generic "tool news" without practical angle.
+   - Only include tools/platform changes relevant to teaching, school leadership, knowledge work, automation, or reading system workflows.
+   - Do not write generic statements like "AI is important".
 
 5) ## One Concept Explained
-   - Explain one concept in a bilingual-friendly way (Chinese-led, English key terms kept).
-   - Keep it practical and concise; avoid textbook-style overexpansion.
+   - Must use this exact bullet format:
+     - **Concept / 概念**：
+     - **Plain explanation / 直白解释**：
+     - **Why it matters / 意义**：
+   - Keep total length around 120–180 Chinese characters.
 
 6) ## Weekly Digest Candidates
-   - Provide 3–5 candidates for Sunday weekly review.
-   - For each candidate include: brief reason, suggested tags, and one follow-up question.
+   - Provide 3–5 candidates.
+   - Use this exact format:
+     - **Candidate**：主题
+       - **Suggested tags**：#AI #geopolitics ...
+       - **Follow-up question**：一个具体问题
 
 7) ## Reading System Capture
-   - State what should be archived now, ignored now, and watched.
-   - Help maintain a long-term reading-assistant knowledge archive.
+   - Exactly 3 bullets only:
+     - **Archive**：
+     - **Watch**：
+     - **Ignore / Low signal**：
 
 8) ## Source Notes
-   - Mention source limitations, including if coverage is narrow, US-centric, outdated, or weak for education mobility.
+   - Must explain:
+     - which source types were used;
+     - what source limitations exist;
+     - whether there is source bias (e.g., US-centric, education sources insufficient, RSS feed limited).
    - Never fabricate missing information.
+
+Hard format prohibitions:
+- Do not write continuous 1,2,3,4,5,6,7 report-style numbering across sections.
+- Do not turn "发生了什么 / 为什么重要 / 对我有什么意义" into numbered subitems.
+- Do not write as a Chinese official report, news roundup, or long-form memo.
 
 Here is the source digest:
 {source_digest}
@@ -223,11 +253,7 @@ def generate_briefing(date_str: str, source_digest: str, api_key: str) -> str:
         messages=[
             {
                 "role": "system",
-                "content": (
-                    "You are Joyce's bilingual intelligence editor. "
-                    "Produce source-grounded, mainly Chinese, analytical Markdown. "
-                    "Do not invent facts."
-                ),
+                "content": "You are Joyce’s bilingual intelligence editor. Write a mobile-friendly, source-grounded, mainly Chinese morning briefing with English key terms preserved. Use clear headings and bullets. Do not invent facts. Do not write numbered report-style paragraphs.",
             },
             {"role": "user", "content": build_prompt(date_str, source_digest)},
         ],
