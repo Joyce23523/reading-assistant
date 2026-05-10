@@ -12,8 +12,14 @@ on:
         required: false
         default: "openrouter/free"
   schedule:
-    # Beijing 07:30 = UTC 23:30 (previous day)
+    # GitHub scheduled workflows may be delayed or occasionally skipped,
+    # so multiple fallback times are used. The script will not overwrite an
+    # existing daily briefing unless FORCE=true.
+    # Beijing 07:30/07:45/08:00/08:20 = UTC 23:30/23:45/00:00/00:20
     - cron: "30 23 * * *"
+    - cron: "45 23 * * *"
+    - cron: "0 0 * * *"
+    - cron: "20 0 * * *"
 
 permissions:
   contents: write
