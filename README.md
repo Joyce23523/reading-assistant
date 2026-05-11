@@ -150,6 +150,7 @@ This workflow uses GitHub Actions + OpenRouter API to generate a daily Morning I
 
 - It requires repository secret: `OPENROUTER_API_KEY`.
 - Default scheduled/automatic runs still use `openrouter/free` to avoid unexpected paid usage.
+- Mock daily briefing workflow (`daily-briefing-mock.yml`) is manual-only (`workflow_dispatch`) and should not run on schedule.
 - For manual testing (`workflow_dispatch`), you can set `model` to `openai/gpt-4.1-mini` (or another OpenRouter model id).
 - Before using paid models, confirm your OpenRouter credits and key spending limit.
 - Model ids should always follow the official OpenRouter models page.
