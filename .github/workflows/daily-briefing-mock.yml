@@ -2,8 +2,6 @@ name: Daily Briefing Mock
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "30 23 * * *"
 
 jobs:
   generate-daily-mock:
