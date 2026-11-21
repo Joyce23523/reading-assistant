@@ -4,16 +4,17 @@ Daily briefings are generated automatically and later consolidated into weekly r
 
 ## Recent Daily Briefings
 
+- [2026-11-21](daily/2026-11-21.md)
 - [2026-11-20](daily/2026-11-20.md)
 - [2026-11-19](daily/2026-11-19.md)
 - [2026-11-18](daily/2026-11-18.md)
 - [2026-11-17](daily/2026-11-17.md)
 - [2026-11-16](daily/2026-11-16.md)
 - [2026-11-15](daily/2026-11-15.md)
-- [2026-11-14](daily/2026-11-14.md)
 
 ## Archive
 
+- [2026-11-14](daily/2026-11-14.md)
 - [2026-11-13](daily/2026-11-13.md)
 - [2026-11-12](daily/2026-11-12.md)
 - [2026-11-11](daily/2026-11-11.md)
